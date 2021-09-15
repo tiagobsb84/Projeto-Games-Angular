@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from 'src/app/dados/service.service';
 
 @Component({
   selector: 'app-content',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  public listagem: any = [];
+
+  constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
+    this.adicionarListagem();
   }
 
+  adicionarListagem(){
+    this.listagem = this.service.getLista();
+    console.log("listagem", this.listagem)
+  }
 }
